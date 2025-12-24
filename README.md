@@ -6,6 +6,13 @@ That guide covers instance creation and basic SQL; this project adds a workload 
 
 It creates a simple e-commerce schema (`customers`, `products`, `orders`, `inventory`, `payments`), a transactional `place_order` stored function, continuous ingestion, and KPI dashboards backed by Postgres functions.
 
+**Highlights**
+
+- **Aligned with Snowflake docs**: Follows the official [Getting Started with Snowflake Postgres](https://www.snowflake.com/en/developers/guides/getting-started-with-snowflake-postgres/) flow for instance creation and basic SQL.
+- **End-to-end OLTP demo**: From schema creation and transactional workloads to continuous ingestion and analytics.
+- **UI + backend separation**: All KPI logic lives in Postgres functions; Streamlit is a thin, Snowflake-themed UI layer.
+- **Safe to re-run**: Idempotent seed scripts and initialization so you can iterate without resetting the instance.
+
 ---
 
 ### 1. Prerequisites
@@ -14,9 +21,7 @@ From the Snowflake guide (`https://www.snowflake.com/en/developers/guides/gettin
 
 - **Snowflake account or trial**.
 - `ACCOUNTADMIN` role or a role with `CREATE POSTGRES INSTANCE`.
-- Ability to attach Postgres to a network:
-  - For new networks: `CREATE NETWORK POLICY ON ACCOUNT` and `CREATE NETWORK RULE ON SCHEMA`.
-  - For existing networks: usage granted on an existing network policy.
+- Ability to attach Postgres to a network (a network policy that allows your IP).
 - A local Postgres client (e.g. `psql`) or GUI (DBeaver, DataGrip, pgAdmin, etc.).
 
 Additional for this project:
